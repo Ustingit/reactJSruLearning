@@ -1,12 +1,13 @@
 import Article from './Article'
 import React from 'react'
 import articles from '../fixtures'
+import ArticlesList from './ArticleList'
 
 function App() {
     return(
         <div>
               <h1>APP</h1><br />
-            <Article article={articles[0]} flag foo="bar" />
+            <ArticlesList articles={articles} />
       </div>
     )
   }
