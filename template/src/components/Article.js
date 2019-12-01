@@ -1,13 +1,16 @@
 import React from 'react'
 
-function Article() {
-    const body = <p>Azaz</p>
+function Article(props) {
+    const {article} = props
+    const body = <p>{article.text}</p>
+
+    console.log("-------------", props)
 
   return(
-      <div className="hello" style={{color: 'red'}}>
-      <h2>Title</h2>
+      <div>
+      <h2>{article.title}</h2>
       { body } 
-  <p>creation date: {(new Date()).toDateString()}</p>
+<p>creation date: {article.creationDate}</p>
     </div>
   )
 }
