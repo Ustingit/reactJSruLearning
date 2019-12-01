@@ -7,7 +7,7 @@ export default function ArticlesList({ articles }){
     );
 
     return(
-        <ul>
+        <ul className="list-unstyled">
             {articleElements}}
         </ul>
     )

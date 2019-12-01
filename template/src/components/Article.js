@@ -17,14 +17,20 @@ class Article extends Component {
 
   render(){
     const {article} = this.props;
-    const body = this.state.isOpen && <p>{article.text}</p>;
+    const body = this.state.isOpen && <section className="card=text">{article.text}</section>;
 
     return(
-      <div>
-      <h2>{article.title}</h2>
-      <button onClick={this.handleClick}>close</button>
-      { body } 
-          <p>creation date: {article.creationDate}</p>
+      <div className="card mx-auto" style={{ width: '50%' }}>
+        <div className="card-header">
+            <h2>{article.title}</h2>
+          <button onClick={this.handleClick} className="btn btn-primary btn-lg float-right">close</button>
+        </div>
+      <div className="card-body">
+        <h6 className="card=subtitle text=muted">
+           <p>creation date: {(new Date(article.date)).toDateString()}</p>
+        </h6>
+         { body } 
+      </div>
     </div>
     )
   }
