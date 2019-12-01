@@ -1,18 +1,42 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-function Article(props) {
-    const {article} = props
-    const body = <p>{article.text}</p>
+class Article extends Component {
+  constructor(props) {
+      super(props);
 
-    console.log("-------------", props)
+      this.state = {
+        isOpen: true
+      }
 
-  return(
+      /* 
+      state = {
+        isOpen = true
+      }
+      */
+  }
+
+  render(){
+    const {article} = this.props;
+    const body = this.state.isOpen && <p>{article.text}</p>;
+
+    return(
       <div>
       <h2>{article.title}</h2>
+      <button onClick={this.handleClick}>close</button>
       { body } 
-<p>creation date: {article.creationDate}</p>
+          <p>creation date: {article.creationDate}</p>
     </div>
-  )
+    )
+  }
+
+  handleClick = () => {
+    console.log('clicked');
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
 }
+
 
 export default Article
