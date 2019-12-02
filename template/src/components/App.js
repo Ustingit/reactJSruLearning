@@ -16,14 +16,16 @@ class App extends Component {
           <h1 className="display-3">My first react app</h1>
           <button className="btn" onClick={this.revert}>Revert</button>
           </div>
-            <ArticlesList articles={this.state.reverted ? articles.reverse() : articles} />
+            <ArticlesList articles={this.state.reverted ? articles.slice().reverse() : articles} />
       </div>
     )
     }
 
-    revert = () => this.setState({
+    revert = () => {
+      this.setState({
         reverted: !this.state.reverted
-    });
+      });
+    };
   }
 
 export default App
