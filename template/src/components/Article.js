@@ -5,7 +5,8 @@ class Article extends Component {
       super(props);
 
       this.state = {
-        isOpen: props.defaultOpen
+        isOpen: props.defaultOpen,
+        count: 0
       }
 
       this.buttonText = {
@@ -18,6 +19,12 @@ class Article extends Component {
         isOpen = true
       }
       */
+  }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+      return this.state.isOpen !== nextState.isOpen;
+
+      // вместо имплементации этого метода можно наследовать класс от React PureComponent, использовать аккуртано
   }
 
   componentWillMount() {
@@ -37,7 +44,8 @@ class Article extends Component {
     return(
       <div className="card mx-auto" style={{ width: '50%' }}>
         <div className="card-header">
-            <h2>{article.title}</h2>
+            <h2 onClick={this.incrementClickCounter}>{article.title}</h2>
+            clicked {this.state.count} times.
           <button onClick={this.handleClick} className="btn btn-primary btn-lg float-right">{this.state.isOpen ? 'close' : 'open'}</button>
         </div>
       <div className="card-body">
@@ -57,6 +65,12 @@ class Article extends Component {
     });
   };
 
+  incrementClickCounter = () => {
+    console.log('CLICK!');
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
 }
 
 
